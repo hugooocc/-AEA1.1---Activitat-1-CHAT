@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xat Socket.IO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Pantalla 1: entrada con el nombre (visible al principio) -->
+    <section id="pantalla-entrada">
+        <h1>Xat Socket.IO</h1>
+        <form id="form-nombre">
+            <label for="input-nombre">¿Cómo te llamas?</label>
+            <input id="input-nombre" maxlength="20" autocomplete="off" placeholder="Tu nombre">
+            <button>Entrar</button>
+        </form>
+        <p id="error-nombre"></p>
+    </section>
+
+    <!-- Pantalla 2: el chat (oculta hasta que se introduce el nombre) -->
+    <section id="pantalla-chat" hidden>
+        <header>
+            <h1>Xat Socket.IO</h1>
+            <p>Participas como: <strong id="nombre-usuario"></strong></p>
+        </header>
+
+        <ul id="mensajes"></ul>
+
+        <form id="form-mensaje">
+            <input id="input-mensaje" maxlength="500" autocomplete="off" placeholder="Escribe un mensaje...">
+            <button>Enviar</button>
+        </form>
+        <p id="error-mensaje"></p>
+    </section>
+
+    <!-- Lo sirve Socket.IO automáticamente: define la función io() -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
+</body>
+
+</html>

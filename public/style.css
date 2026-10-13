@@ -1,0 +1,153 @@
+:root {
+    --fondo: #f2f4f7;
+    --tarjeta: #ffffff;
+    --texto: #1f2933;
+    --suave: #6b7785;
+    --borde: #d9dee5;
+    --primario: #2f6fde;
+    --error: #c62828;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Sin esta regla, un "display: flex" anularía el atributo hidden */
+[hidden] {
+    display: none !important;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    font-family: system-ui, sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+}
+
+section {
+    width: 100%;
+    max-width: 640px;
+    padding: 24px;
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+}
+
+h1 {
+    margin: 0 0 16px;
+    font-size: 1.4rem;
+}
+
+/* ---------- Formularios ---------- */
+
+form {
+    display: flex;
+    gap: 8px;
+}
+
+input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    font: inherit;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+}
+
+button {
+    padding: 10px 16px;
+    font: inherit;
+    color: #fff;
+    background: var(--primario);
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ---------- Pantalla de entrada ---------- */
+
+#form-nombre {
+    flex-wrap: wrap;
+}
+
+#form-nombre label {
+    width: 100%;
+}
+
+#error-nombre,
+#error-mensaje {
+    min-height: 1.2em;
+    margin: 8px 0 0;
+    color: var(--error);
+}
+
+/* ---------- Pantalla del chat ---------- */
+
+#pantalla-chat {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#pantalla-chat header {
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--borde);
+}
+
+#pantalla-chat header h1 {
+    margin-bottom: 4px;
+}
+
+#pantalla-chat header p {
+    margin: 0;
+    color: var(--suave);
+}
+
+/* Altura limitada + scroll vertical: los mensajes nuevos no estiran la página */
+#mensajes {
+    height: 400px;
+    max-height: 60vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0;
+    padding: 8px;
+    list-style: none;
+    background: var(--fondo);
+    border-radius: 8px;
+}
+
+.mensaje {
+    padding: 8px 12px;
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+}
+
+.autor {
+    margin-right: 8px;
+}
+
+.hora {
+    font-size: 0.8rem;
+    color: var(--suave);
+}
+
+.texto {
+    margin: 4px 0 0;
+    white-space: pre-wrap;
+    /* respeta los espacios del mensaje */
+    overflow-wrap: anywhere;
+    /* corta palabras muy largas en vez de desbordar */
+}
